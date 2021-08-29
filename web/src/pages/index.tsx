@@ -1,7 +1,3 @@
-import Register from './register'
-
-const Index = () => {
-  return <Register />
-}
+const Index = () => <div>Hello World</div>
 
 export default Index
