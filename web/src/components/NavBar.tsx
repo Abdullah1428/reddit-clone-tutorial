@@ -14,7 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
   } else if (data && data.me) {
     body = (
       <Flex>
-        <Box>{data.me.username}</Box>
+        <Box mr={2}>{data.me.username}</Box>
         <Button variant='link'>logout</Button>
       </Flex>
     )

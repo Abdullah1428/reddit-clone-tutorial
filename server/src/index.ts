@@ -32,6 +32,8 @@ const main = async () => {
 
   const app = express()
 
+  app.set('trust proxy', 1)
+
   const RedisStore = connectRedis(session)
   const redisClient = redis.createClient()
   app.use(
@@ -45,10 +47,10 @@ const main = async () => {
       name: 'qid',
       store: new RedisStore({ client: redisClient, disableTouch: true }),
       cookie: {
-        maxAge: 1000 * 60 * 24 * 365 * 10, // years
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
         httpOnly: true, // not accessible in js on front end
         sameSite: 'lax', // protecting against csrf
-        secure: __prod__ // cookie only works in https
+        secure: false // cookie only works in https
       },
       saveUninitialized: false,
       secret: 'later-on-env-variable',
